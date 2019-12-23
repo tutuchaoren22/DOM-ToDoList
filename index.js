@@ -23,37 +23,34 @@ addButton.addEventListener('click', function(event) {
 
 toDoList.addEventListener('click', function(event) {
     var eventTarget = event.target;
-    if ('hasCompleted' === eventTarget.id) {
-        var index = eventTarget.parentElement.getAttribute("item-index");
-        var toDoThing = JSON.parse(localStorage.getItem(index));
-        toDoThing.hasDone = eventTarget.checked;
-        localStorage.setItem(index, JSON.stringify(toDoThing));
-        console.log(eventTarget.checked);
-        eventTarget.parentElement.firstElementChild.checked = eventTarget.checked;
-        console.log(eventTarget.parentElement.firstElementChild.checked);
-        if (toDoThing.hasDone) {
-            eventTarget.parentNode.style.textDecorationLine = "line-through";
-            eventTarget.parentNode.style.color = "lightgray";
-        }
+    console.log(eventTarget.className);
+    switch (eventTarget.className) {
+        case 'hasCompleted':
+            var index = eventTarget.parentElement.getAttribute("item-index");
+            var toDoThing = JSON.parse(localStorage.getItem(index));
+            toDoThing.hasDone = eventTarget.checked;
+            localStorage.setItem(index, JSON.stringify(toDoThing));
+            console.log(eventTarget.checked);
+            eventTarget.parentElement.firstElementChild.checked = eventTarget.checked;
+            console.log(eventTarget.parentElement.firstElementChild.checked);
+            if (toDoThing.hasDone) {
+                eventTarget.parentNode.style.textDecorationLine = "line-through";
+                eventTarget.parentNode.style.color = "lightgray";
+                break;
+            }
+        case 'button-delete':
+            if (confirm("是否删除该TODO？")) {
+                toDoList.removeChild(eventTarget.parentElement);
+            }
+            break;
+        default:
+            break;
     }
-});
 
-// toDoList.addEventListener('click', function(event) {
-//     var eventTarget = event.target;
-//     if ('hasCompleted' === eventTarget.id) {
-//         var index = eventTarget.parentElement.getAttribute("item-index");
-//         var toDoThing = JSON.parse(localStorage.getItem(index));
-//         toDoThing.hasDone = eventTarget.checked;
-//         localStorage.setItem(index, JSON.stringify(toDoThing));
-//         console.log(eventTarget.checked);
-//         eventTarget.parentElement.firstElementChild.checked = eventTarget.checked;
-//         console.log(eventTarget.parentElement.firstElementChild.checked);
-//         if (toDoThing.hasDone) {
-//             eventTarget.parentNode.style.textDecorationLine = "line-through";
-//             eventTarget.parentNode.style.color = "lightgray";
-//         }
-//     }
-// });
+});
+// AC1: 当我的鼠标移到某个 TODO 所在的行上，最右侧会出现一个「X」, 并且我可以点击这个 「X」
+// AC2: 当我点击相应 TODO 后面的 「X」，会弹出一个确认框，让我确认“是否删除该 TODO？”，并有两个按钮 「确认」、「取消」
+// AC3: 当我点击确认框中的“确认”按钮，该 TODO 从我的页面列表中消失
 
 footer.addEventListener('click', function(event) {
     var eventTarget = event.target;
@@ -101,20 +98,9 @@ function addToDoList(event) {
 }
 
 function addToDoThing(toDoThing) {
-    toDoList.innerHTML += `<li item-index="${toDoThing.index}"><input id="hasCompleted" type="checkbox" check=${toDoThing.hasDone} /><span>${toDoThing.content}</span></li>`;
+    toDoList.innerHTML += `<li item-index="${toDoThing.index}">
+    <input class="hasCompleted" type="checkbox" check=${toDoThing.hasDone} />
+    <span>${toDoThing.content}</span>
+    <button class="button-delete">×</button>
+    </li>`;
 }
-
-// function choseActiveThing(event) {
-
-
-// }
-
-// AC1：当点击某条待办事项，代表完成该事项，点击后该事项前面的项目符号改变，文字变灰色并出现删除线；
-
-// AC1：当点击底部按钮「ALL」，显示所有待办事项
-// AC2：当点击底部按钮「Active」，显示未完成的代办事项
-// AC3：当点击底部按钮「Complete」，显示已完成的待办事项
-
-// AC1: 当我的鼠标移到某个 TODO 所在的行上，最右侧会出现一个「X」, 并且我可以点击这个 「X」
-// AC2: 当我点击相应 TODO 后面的 「X」，会弹出一个确认框，让我确认“是否删除该 TODO？”，并有两个按钮 「确认」、「取消」
-// AC3: 当我点击确认框中的“确认”按钮，该 TODO 从我的页面列表中消失

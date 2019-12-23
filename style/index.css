@@ -69,3 +69,19 @@ li:nth-of-type(even) {
 .button-chose:hover {
     border: 1px solid rgba(252, 153, 156);
 }
+
+.button-delete {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    left: 398px;
+    border: 0;
+    line-height: 15px;
+    font-size: large;
+    background-color: transparent;
+    visibility: hidden;
+}
+
+li:hover>.button-delete {
+    visibility: visible;
+}
