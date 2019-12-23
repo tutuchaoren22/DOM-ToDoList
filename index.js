@@ -33,17 +33,28 @@ toDoList.addEventListener('click', function(event) {
         console.log(eventTarget.parentElement.firstElementChild.checked);
         if (toDoThing.hasDone) {
             eventTarget.parentNode.style.textDecorationLine = "line-through";
-        } else {
-            eventTarget.parentNode.style.textDecorationLine = "none";
+            eventTarget.parentNode.style.color = "lightgray";
         }
     }
 });
 
+// toDoList.addEventListener('click', function(event) {
+//     var eventTarget = event.target;
+//     if ('hasCompleted' === eventTarget.id) {
+//         var index = eventTarget.parentElement.getAttribute("item-index");
+//         var toDoThing = JSON.parse(localStorage.getItem(index));
+//         toDoThing.hasDone = eventTarget.checked;
+//         localStorage.setItem(index, JSON.stringify(toDoThing));
+//         console.log(eventTarget.checked);
+//         eventTarget.parentElement.firstElementChild.checked = eventTarget.checked;
+//         console.log(eventTarget.parentElement.firstElementChild.checked);
+//         if (toDoThing.hasDone) {
+//             eventTarget.parentNode.style.textDecorationLine = "line-through";
+//             eventTarget.parentNode.style.color = "lightgray";
+//         }
+//     }
+// });
 
-// AC4：当底部按钮选中「Active」时，输入框中添加 todo，会显示新添加的 todo；
-// AC5：当底部按钮选中「Complete」时，输入框中添加 todo，不会显示新添加的 todo；
-
-// console.log(toDoThings)
 footer.addEventListener('click', function(event) {
     var eventTarget = event.target;
     switch (eventTarget.innerHTML) {
@@ -72,10 +83,6 @@ footer.addEventListener('click', function(event) {
             break;
     }
 });
-
-// activeButton.addEventListener('click', function(event) {
-//     choseActiveThing(event);
-// });
 
 
 function addToDoList(event) {
