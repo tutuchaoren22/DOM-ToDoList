@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: gainsboro;
+}
+
+.main {
+    margin: 50px auto;
+    width: 500px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: white;
+}
+
+h2,
+p,
+input-content {
+    margin: 15px 0 15px 0;
+}
+
+p {
+    font-style: italic;
+}
+
+.input-add {
+    width: 400px;
+    height: 25px;
+}
+
+.button-add {
+    width: 60px;
+    height: 29px;
+    border: 0;
+    border-radius: 3px;
+    color: white;
+    background-color: rgba(252, 153, 156);
+}
+
+ol li {
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    list-style-position: inside;
+}
+
+li:nth-of-type(odd) {
+    background: white;
+}
+
+li:nth-of-type(even) {
+    background: rgba(243, 235, 235);
+}
+
+.footer {
+    padding-left: 150px;
+}
+
+.button-chose {
+    border: 1px solid transparent;
+    padding: 3px;
+    margin: 0 20px 0 20px;
+    color: rgba(252, 153, 156);
+    background-color: white;
+}
+
+.button-chose:hover {
+    border: 1px solid rgba(252, 153, 156);
+}

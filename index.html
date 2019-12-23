@@ -5,45 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TODOLIST</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>ToDoList</title>
+    <link rel="stylesheet" type="text/css" href="./style/index.css">
     <script src="index.js"></script>
 </head>
 
 <body>
-    <div class="header">
-        <h2>To Do List</h2>
-        <p>Simple Todo List with adding and filter by diff status.</p>
-    </div>
-    <div class="container">
-        <div class="inputContent">
-            <input class="inputAdd"></input>
-            <button class="buttonAdd">Add</button>
+    <div class="main">
+        <div class="header">
+            <h2>To Do List</h2>
+            <p>Simple Todo List with adding and filter by diff status.</p>
         </div>
-        <ol>
-            <li>
-                <input type="checkbox">
-                <span>任务一</span>
-            </li>
-            <li>
-                <input type="checkbox">
-                <span>任务二</span>
-            </li>
-            <li>
-                <input type="checkbox">
-                <span>任务三</span>
-            </li>
-            <li>
-                <input type="checkbox">
-                <span>任务四</span>
-            </li>
-        </ol>
+        <div class="container">
+            <div class="input-content">
+                <input class="input-add"></input>
+                <button class="button-add">Add</button>
+            </div>
+            <ol>
+                <li>
+                    <input type="checkbox">
+                    <span>任务一</span>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>任务二</span>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>任务三</span>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>任务四</span>
+                </li>
+            </ol>
+        </div>
+        <div class="footer">
+            <button class="button-chose">ALL</button>
+            <button class="button-chose">Active</button>
+            <button class="button-chose">Complete</button>
+        </div>
+
     </div>
-    <div class="footer">
-        <button class="buttonChose">ALL</button>
-        <button class="buttonChose">Active</button>
-        <button class="buttonChose">Complete</button>
-    </div>
+
 </body>
 
 </html>
