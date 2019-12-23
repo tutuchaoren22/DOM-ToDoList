@@ -2,14 +2,7 @@ var addButton = document.getElementsByClassName('button-add')[0];
 var addInput = document.getElementsByClassName('input-add')[0];
 var toDoList = document.getElementsByTagName('ol')[0];
 var toDoThings = document.getElementsByTagName('li');
-// var choseButton = document.getElementsByClassName('button-chose');
-// var allButton = document.getElementsByClassName('button-chose')[0];
-// var activeButton = document.getElementsByClassName('button-chose')[1];
-// var completeButton = document.getElementsByClassName('button-chose')[2];
 var footer = document.getElementsByClassName('footer')[0];
-// AC1:通过在输入框中输入待办事项，按回车键或者「Add」按钮添加一条待办事项；
-// AC2：对于刚添加的待办事项出现在列表中，包含三个部分：项目符号、内容
-// AC3：当什么都没输入时，按回车键或者「Add」按钮不会有任何待办事项被添加
 
 addInput.addEventListener('keydown', function(event) {
     if (event.keyCode == 13) {
@@ -30,14 +23,17 @@ toDoList.addEventListener('click', function(event) {
             var toDoThing = JSON.parse(localStorage.getItem(index));
             toDoThing.hasDone = eventTarget.checked;
             localStorage.setItem(index, JSON.stringify(toDoThing));
-            console.log(eventTarget.checked);
+            // console.log(eventTarget.checked);
             eventTarget.parentElement.firstElementChild.checked = eventTarget.checked;
-            console.log(eventTarget.parentElement.firstElementChild.checked);
-            if (toDoThing.hasDone) {
+            // console.log(eventTarget.parentElement.firstElementChild.checked);
+            if (eventTarget.checked) {
                 eventTarget.parentNode.style.textDecorationLine = "line-through";
                 eventTarget.parentNode.style.color = "lightgray";
-                break;
+            } else {
+                eventTarget.parentNode.style.textDecorationLine = "";
+                eventTarget.parentNode.style.color = "black";
             }
+            break;
         case 'button-delete':
             if (confirm("是否删除该TODO？")) {
                 toDoList.removeChild(eventTarget.parentElement);
@@ -48,27 +44,16 @@ toDoList.addEventListener('click', function(event) {
     }
 
 });
-// AC1: 当我的鼠标移到某个 TODO 所在的行上，最右侧会出现一个「X」, 并且我可以点击这个 「X」
-// AC2: 当我点击相应 TODO 后面的 「X」，会弹出一个确认框，让我确认“是否删除该 TODO？”，并有两个按钮 「确认」、「取消」
-// AC3: 当我点击确认框中的“确认”按钮，该 TODO 从我的页面列表中消失
 
 footer.addEventListener('click', function(event) {
     var eventTarget = event.target;
     switch (eventTarget.innerHTML) {
         case 'ALL':
-            // for (var i = 0, len = toDoThings.length; i < len; i++) {
-            //     console.log(toDoThings[i].firstElementChild.checked);
-            //     toDoThings[i].style.visibility = toDoThings[i].firstElementChild.checked ? "" : "";
-            // };
             for (var li of toDoThings) {
                 li.hidden = false
             }
             break;
         case 'Active':
-            // for (var i = 0, len = toDoThings.length; i < len; i++) {
-            //     console.log(toDoThings[i].firstElementChild.checked);
-            //     toDoThings[i].style.visibility = toDoThings[i].firstElementChild.checked ? "none" : "";
-            // };
             for (var li of toDoThings) {
                 li.hidden = li.firstElementChild.checked;
             }
