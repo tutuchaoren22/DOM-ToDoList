@@ -55,6 +55,7 @@ li:nth-of-type(even) {
 }
 
 .footer {
+    margin-top: 30px;
     padding-left: 150px;
 }
 
